@@ -1,0 +1,27 @@
+<h3>Usuários</h3>
+
+<p style="color: green"><%= notice %></p>
+
+<div class="row">
+  <%= form_tag(users_path, :method => "get") do %>
+    <div class="col-md-10">
+      <%= text_field_tag(:search, '', class: 'form-control') %>
+    </div>
+    <div class="col-md-2">
+      <%= submit_tag 'Pesquisar', class: 'btn btn-primary btn-block' %>    
+    </div>
+  <% end %>
+</div>
+
+<br><br>
+<% if @users %>
+  <% @users.each do |user| %>
+    <%= render user %>
+  <% end %>
+<% else %>
+  Nenhum registro encontrado
+<% end %>
+
+<div class="text-center">
+  <%= will_paginate @users %>
+</div>

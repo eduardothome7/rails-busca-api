@@ -1,0 +1,112 @@
+<%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name_title, style: "display: block" %>
+    <%= form.text_field :name_title %>
+  </div>
+
+  <div>
+    <%= form.label :name_first, style: "display: block" %>
+    <%= form.text_field :name_first %>
+  </div>
+
+  <div>
+    <%= form.label :name_last, style: "display: block" %>
+    <%= form.text_field :name_last %>
+  </div>
+
+  <div>
+    <%= form.label :gender, style: "display: block" %>
+    <%= form.text_field :gender %>
+  </div>
+
+  <div>
+    <%= form.label :address, style: "display: block" %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :number, style: "display: block" %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div>
+    <%= form.label :city, style: "display: block" %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div>
+    <%= form.label :postcode, style: "display: block" %>
+    <%= form.text_field :postcode %>
+  </div>
+
+  <div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.label :country, style: "display: block" %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div>
+    <%= form.label :date_birth, style: "display: block" %>
+    <%= form.date_field :date_birth %>
+  </div>
+
+  <div>
+    <%= form.label :login, style: "display: block" %>
+    <%= form.text_field :login %>
+  </div>
+
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.text_field :password %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :picture_thumbnail, style: "display: block" %>
+    <%= form.text_field :picture_thumbnail %>
+  </div>
+
+  <div>
+    <%= form.label :picture_medium, style: "display: block" %>
+    <%= form.text_field :picture_medium %>
+  </div>
+
+  <div>
+    <%= form.label :picture_large, style: "display: block" %>
+    <%= form.text_field :picture_large %>
+  </div>
+
+  <div>
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div>
+    <%= form.label :cell, style: "display: block" %>
+    <%= form.text_field :cell %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
