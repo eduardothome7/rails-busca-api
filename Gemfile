@@ -23,11 +23,9 @@ gem "turbo-rails"
 
 gem "rest-client"
 
-gem 'will_paginate', '~> 3.3'
+gem 'will_paginate'
 
-gem 'fog-aws'
-
-gem 'google-cloud-storage'
+gem 'cloudinary'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"

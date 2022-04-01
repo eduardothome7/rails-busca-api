@@ -21,9 +21,9 @@ class UsersController < ApplicationController
   def save_user_from_api
     User.delete_all
     response = self::getDataFromApi
-    objArray = JSON.parse(response)
+    array_user = JSON.parse(response)
     error = false
-    objArray['results'].each do |user|
+    array_user['results'].each do |user|
       if !self::saveUser(user) 
         error = true        
       end
@@ -47,7 +47,6 @@ class UsersController < ApplicationController
     end
 
     def saveUser(user)
-      # User.delete_all
       @user = User.new
       @user.name_title = user['name']['title']
       @user.name_first = user['name']['first']
@@ -56,7 +55,29 @@ class UsersController < ApplicationController
       @user.gender = user['gender']
       @user.picture_large = user['picture']['large']
       @user.picture_medium = user['picture']['medium']
-      @user.picture_thumbnail = user['picture']['thumbnail']
+      
+      response_upload_thumbnail = Cloudinary::Uploader.upload(user['picture']['thumbnail'])
+      response_upload_medium = Cloudinary::Uploader.upload(user['picture']['medium'])
+      response_upload_large = Cloudinary::Uploader.upload(user['picture']['large'])
+      
+      if response_upload_thumbnail
+        @user.picture_thumbnail = response_upload_thumbnail['url'] 
+      else
+        @user.picture_thumbnail = user['picture']['thumbnail']
+      end
+
+      if response_upload_medium
+        @user.picture_medium = response_upload_medium['medium'] 
+      else
+        @user.picture_medium = user['picture']['medium']
+      end
+
+      if response_upload_large
+        @user.picture_large = response_upload_large['url'] 
+      else
+        @user.picture_large = user['picture']['large']
+      end
+
       @user.save!
 
       return true
