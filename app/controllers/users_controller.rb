@@ -57,25 +57,11 @@ class UsersController < ApplicationController
       @user.picture_medium = user['picture']['medium']
       
       response_upload_thumbnail = Cloudinary::Uploader.upload(user['picture']['thumbnail'])
-      response_upload_medium = Cloudinary::Uploader.upload(user['picture']['medium'])
-      response_upload_large = Cloudinary::Uploader.upload(user['picture']['large'])
       
       if response_upload_thumbnail
         @user.picture_thumbnail = response_upload_thumbnail['url'] 
       else
         @user.picture_thumbnail = user['picture']['thumbnail']
-      end
-
-      if response_upload_medium
-        @user.picture_medium = response_upload_medium['medium'] 
-      else
-        @user.picture_medium = user['picture']['medium']
-      end
-
-      if response_upload_large
-        @user.picture_large = response_upload_large['url'] 
-      else
-        @user.picture_large = user['picture']['large']
       end
 
       @user.save!
