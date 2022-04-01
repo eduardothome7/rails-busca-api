@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_one_attached :picture_thumbnail
 
   def full_name
     return self.name_title + ' ' + self.name_first + ' ' + self.name_last
